@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SodukoSolver.dependencies
 {
-    public class solver
+    public class Solver
     {
 
         public int[,] solve(int[,] grid)
