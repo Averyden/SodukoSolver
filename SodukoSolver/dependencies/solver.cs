@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,19 @@ using System.Threading.Tasks;
 
 namespace SodukoSolver.dependencies
 {
-    public class Solver
+    public class Solver : INotifyPropertyChanged
     {
+
+        public int Cell00 { get; set; }
+        public int Cell01 { get; set; }
+        public int Cell02 { get; set; }
+        public int Cell10 { get; set; }
+        public int Cell11 { get; set; }
+        public int Cell12 { get; set; }
+        public int Cell20 { get; set; }
+        public int Cell21 { get; set; }
+        public int Cell22 { get; set; }
+
 
         public int[,] solve(int[,] grid)
         {
@@ -42,6 +54,24 @@ namespace SodukoSolver.dependencies
                 }
             }
             return grid;
-        } 
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+
+        {
+
+            PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+
+            if (propertyChanged != null)
+
+            {
+                propertyChanged(this, new PropertyChangedEventArgs(propertyName));
+
+            }
+
+        }
+
     }
 }
