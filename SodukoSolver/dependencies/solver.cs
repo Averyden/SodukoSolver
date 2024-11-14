@@ -11,15 +11,69 @@ namespace SodukoSolver.dependencies
     public class Solver : INotifyPropertyChanged
     {
 
-        public int Cell00 { get; set; }
-        public int Cell01 { get; set; }
-        public int Cell02 { get; set; }
-        public int Cell10 { get; set; }
-        public int Cell11 { get; set; }
-        public int Cell12 { get; set; }
-        public int Cell20 { get; set; }
-        public int Cell21 { get; set; }
-        public int Cell22 { get; set; }
+        private int _cell00;
+        private int _cell01;
+        private int _cell02;
+        private int _cell10;
+        private int _cell11;
+        private int _cell12;
+        private int _cell20;
+        private int _cell21;
+        private int _cell22;
+
+        public int Cell00
+        {
+            get { return _cell00; }
+            set { _cell00 = value; OnPropertyChanged(nameof(Cell00)); }
+        }
+
+        public int Cell01
+        {
+            get { return _cell01; }
+            set { _cell01 = value; OnPropertyChanged(nameof(Cell01)); }
+        }
+
+        public int Cell02
+        {
+            get { return _cell02; }
+            set { _cell02 = value; OnPropertyChanged(nameof(Cell02)); }
+        }
+
+        public int Cell10
+        {
+            get { return _cell10; }
+            set { _cell10 = value; OnPropertyChanged(nameof(Cell10)); }
+        }
+
+        public int Cell11
+        {
+            get { return _cell11; }
+            set { _cell11 = value; OnPropertyChanged(nameof(Cell11)); }
+        }
+
+        public int Cell12
+        {
+            get { return _cell12; }
+            set { _cell12 = value; OnPropertyChanged(nameof(Cell12)); }
+        }
+
+        public int Cell20
+        {
+            get { return _cell20; }
+            set { _cell20 = value; OnPropertyChanged(nameof(Cell20)); }
+        }
+
+        public int Cell21
+        {
+            get { return _cell21; }
+            set { _cell21 = value; OnPropertyChanged(nameof(Cell21)); }
+        }
+
+        public int Cell22
+        {
+            get { return _cell22; }
+            set { _cell22 = value; OnPropertyChanged(nameof(Cell22)); }
+        }
 
 
         public int[,] solve(int[,] grid)
