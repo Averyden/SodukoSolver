@@ -21,11 +21,12 @@ namespace SodukoSolver.dependencies
                 {
                     if (grid[x, y] == 0)
                     {
-                        for (int curNum = 1; curNum<9; curNum++)
+                        for (int curNum = 1; curNum<9;)
                         {
                             if (grid[x,y] == curNum) 
                             {
                                 Debug.WriteLine("invalid num for placement, moving on."); // increment number as its invalid.
+                                curNum++;
                             } else
                             {
                                 grid[x,y] = curNum;
