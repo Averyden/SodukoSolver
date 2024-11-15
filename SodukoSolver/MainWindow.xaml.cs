@@ -1,5 +1,4 @@
-﻿using SodukoSolver.dependencies;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SodukoSolver
 {
@@ -8,33 +7,58 @@ namespace SodukoSolver
     /// </summary>
     public partial class MainWindow : Window
     {
-        Solver s = new Solver();
-
-
-        int[,] SodGrid = { { } };
+        private Solver solver;
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = s;
 
-            // Initialize test cells
-            s.Cell00 = 1;
-            s.Cell10 = 3;
-            s.Cell12 = 2;
-            s.Cell21 = 3;
-
-            SodGrid = new int[3, 3]
+            // Init the solver with testing values
+            int[,] initialGrid = new int[3, 3]
             {
-                { s.Cell00, s.Cell01, s.Cell02 },
-                { s.Cell10, s.Cell11, s.Cell12 },
-                { s.Cell21, s.Cell22, s.Cell22 }
+                { 1, 0, 0 }, 
+                { 3, 0, 2 },
+                { 0, 3, 0 }
             };
+
+            solver = new Solver(initialGrid);
+
+         
+            DataContext = solver;
         }
 
         private void SolveButton_Click(object sender, RoutedEventArgs e)
         {
-            s.solve(SodGrid); // find a way to databing all the current cells into one int[,] type.
+
+            int[,] solvedGrid = solver.Solve();
+
+            if (solvedGrid != null)
+            {
+                UpdateLabels(solvedGrid);
+                MessageBox.Show("Sudoku solved!");
+                
+            }
+            else
+            {
+                MessageBox.Show("No solution found.");
+            }
+        }
+
+        private void UpdateLabels(int[,] grid)
+        {
+        
+            solver.Cell00 = grid[0, 0];
+            solver.Cell01 = grid[0, 1];
+            solver.Cell02 = grid[0, 2];
+            solver.Cell10 = grid[1, 0];
+            solver.Cell11 = grid[1, 1];
+            solver.Cell12 = grid[1, 2];
+            solver.Cell20 = grid[2, 0];
+            solver.Cell21 = grid[2, 1];
+            solver.Cell22 = grid[2, 2];
+
+            // Notify UI to refresh
+          
         }
     }
 }

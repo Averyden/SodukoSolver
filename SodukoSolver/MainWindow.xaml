@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SodukoSolver"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="SoDuKo" Height="600" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
+       
+        <UniformGrid Rows="3" Columns="3" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Margin="20">
+            <Label x:Name="Label00" Content="{Binding Path=Cell00}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label01" Content="{Binding Path=Cell01}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label02" Content="{Binding Path=Cell02}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label10" Content="{Binding Path=Cell10}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label11" Content="{Binding Path=Cell11}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label12" Content="{Binding Path=Cell12}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label20" Content="{Binding Path=Cell20}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label21" Content="{Binding Path=Cell21}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label x:Name="Label22" Content="{Binding Path=Cell22}" Width="80" Height="80" BorderBrush="Black" BorderThickness="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        </UniformGrid>
+
+
+        <!-- Solve Button -->
+        <Button x:Name="SolveButton" Content="Solve" Width="100" Height="40" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Command="{Binding SolveCommand}" Click="SolveButton_Click"/>
     </Grid>
 </Window>
